@@ -31,5 +31,6 @@ ansible-playbook workstation.yml -e "ansible_python_interpreter=/usr/bin/python2
 
 * Lubuntu 15
 * Xubuntu 14
+* Manjaro 16.06
 
 > This repo is based on https://github.com/renanivo/playbooks
