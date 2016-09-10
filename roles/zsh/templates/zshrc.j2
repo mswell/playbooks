@@ -17,7 +17,7 @@ mkdir -p $WORKON_HOME
 source /usr/local/bin/virtualenvwrapper.sh
 {% else %}
 source /usr/bin/virtualenvwrapper.sh
-{% end %}
+{% endif %}
 
 # Pyenv stuff
 export PATH="{{ ansible_env.HOME }}/.pyenv/bin:$PATH"
