@@ -1,0 +1,3 @@
+- name: ensure golang is installed
+  pacman: name=go state=present
+  sudo: yes
