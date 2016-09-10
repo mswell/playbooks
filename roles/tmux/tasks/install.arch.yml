@@ -1,0 +1,3 @@
+- name: ensure tmux is installed
+  pacman: name=tmux state=present
+  sudo: yes

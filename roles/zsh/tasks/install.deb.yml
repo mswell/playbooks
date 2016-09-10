@@ -1,0 +1,3 @@
+- name: ensure arch is installed
+  apt: name=zsh state=present
+  sudo: yes
