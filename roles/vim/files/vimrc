@@ -23,6 +23,7 @@ Plug 'tpope/vim-dispatch'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'drgarcia1986/python-compilers.vim'
+Plug 'fatih/vim-go'
 
 call plug#end()
 
@@ -44,6 +45,7 @@ set backspace=eol,start,indent
 " Command mode settings "
 """""""""""""""""""""""""
 set wildmenu
+set wildmode=list:longest,list:full
 
 """""""""""""""""""""""
 " Don't create backup "
@@ -82,7 +84,7 @@ set laststatus=2
 
 " show traling spaces
 set list
-set listchars=trail:-
+set listchars=trail:-,tab:\ \ ,
 
 """"""""""""
 " Commands "
@@ -110,6 +112,12 @@ cnoreabbrev WQ wq
 cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qall qall
+
+"""""""""""""""""
+" Abbreviations "
+"""""""""""""""""
+iab gL logger = logging.getLogger(__name__)
+iab pdb import pdb; pdb.set_trace()
 
 """""""""""""""""
 " Auto commands "
@@ -144,3 +152,7 @@ let g:airline_left_alt_sep = '»'
 let g:airline_right_sep = '◀'
 let g:airline_right_alt_sep = '«'
 let g:airline#extensions#readonly#symbol = '⊘'
+
+" Vim-Go
+" run GoImports on save
+let g:go_fmt_command = "goimports"
