@@ -3,9 +3,10 @@
   roles:
     - os
     - git
+    - python
+    - golang
     - vim
     - terminator
-    - python
     - ack
     - curl
     - xclip
