@@ -1,0 +1,41 @@
+# oh-my-zsh
+export ZSH={{ ansible_env.HOME }}/.oh-my-zsh
+
+ZSH_THEME="robbyrussell"
+ENABLE_CORRECTION="true"
+plugins=(git)
+source $ZSH/oh-my-zsh.sh
+
+# pbcopy
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
+
+# Virtualenvwrapper stuff
+export WORKON_HOME={{ ansible_env.HOME }}/venvs
+mkdir -p $WORKON_HOME
+{% if ansible_os_family == 'Debian' %}
+source /usr/local/bin/virtualenvwrapper.sh
+{% else %}
+source /usr/bin/virtualenvwrapper.sh
+{% end %}
+
+# Pyenv stuff
+export PATH="{{ ansible_env.HOME }}/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# swap caps <-> escape
+setxkbmap -option caps:swapescape
+
+# Ruby/Gem stuff (to play Vimgolf)
+export PATH=$PATH:{{ ansible_env.HOME }}/.gem/ruby/2.3.0/bin
+
+# Node stuff
+export PATH=$PATH:/usr/lib/node_modules
+
+# Golan stuff
+export GOPATH={{ ansible_env.HOME }}/go
+export PATH=$PATH:{{ ansible_env.HOME }}/go/bin
+
+# Tmux stuff
+export TERM=screen-256color-bce

@@ -1,0 +1,11 @@
+- include: install.deb.yml
+  when: ansible_os_family == 'Debian'
+
+- include: install.arch.yml
+  when: ansible_pkg_mgr == 'pacman'
+
+- name: install oh-my-zsh
+  command: sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+- name: be sure zsh is configured
+  template: src=zshrc.j2 dest={{ ansible_env.HOME }}/.zshrc owner={{ ansible_user_id }}
