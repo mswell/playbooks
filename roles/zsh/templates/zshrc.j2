@@ -19,11 +19,6 @@ source /usr/local/bin/virtualenvwrapper.sh
 source /usr/bin/virtualenvwrapper.sh
 {% endif %}
 
-# Pyenv stuff
-export PATH="{{ ansible_env.HOME }}/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
 # swap caps <-> escape
 setxkbmap -option caps:swapescape
 
