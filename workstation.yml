@@ -9,6 +9,8 @@
     - ack
     - curl
     - xclip
+    - zsh
+    - tmux
     - tree
     - dotfiles
     - chromium
