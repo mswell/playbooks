@@ -1,5 +1,4 @@
-- include: install.deb.yml
+- name: ensure terminator is installed
+  apt: name=terminator state=present
+  sudo: yes
   when: ansible_os_family == 'Debian'
-
-- include: install.arch.yml
-  when: ansible_pkg_mgr == 'pacman'
