@@ -8,14 +8,15 @@
   easy_install: name=pip
   sudo: yes
 
-- name: upgrade pip
-  pip: name=pip state=latest
+- name: install and upgrade python packages
+  pip: name={{ item }} state=latest
   sudo: yes
-
-- name: install virtualenv
-  pip: name=virtualenv state=latest
-  sudo: yes
-
-- name: install virtualenvwrapper
-  pip: name=virtualenvwrapper state=latest
-  sudo: yes
+  with_items:
+      - pip
+      - virtualenv
+      - virtualenvwrapper
+      - isort
+      - flake8
+      - pylint
+      - ptpython
+      - pyenv
