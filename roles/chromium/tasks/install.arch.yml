@@ -1,0 +1,2 @@
+- name: ensure google-chrome is installed
+  command: yaourt -S google-chrome --noconfirm

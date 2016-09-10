@@ -1,5 +1,5 @@
-- include: install.deb.yml
+- include: ubuntu.yml
   when: ansible_os_family == 'Debian'
 
-- include: install.arch.yml
+- include: arch.yml
   when: ansible_pkg_mgr == 'pacman'

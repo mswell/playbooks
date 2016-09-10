@@ -1,0 +1,3 @@
+- name: ensure git is installed
+  pacman: name=git state=present
+  sudo: yes
