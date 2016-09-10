@@ -19,11 +19,10 @@ endif
 call plug#begin('~/.vim/plugged/')
 
 " Plugins Installation
-Plug 'tomasr/molokai'
-Plug 'scrooloose/syntastic'
-Plug 'Yggdroot/indentLine'
+Plug 'tpope/vim-dispatch'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'drgarcia1986/python-compilers.vim'
 
 call plug#end()
 
@@ -40,6 +39,11 @@ set softtabstop=4
 set smarttab
 
 set backspace=eol,start,indent
+
+"""""""""""""""""""""""""
+" Command mode settings "
+"""""""""""""""""""""""""
+set wildmenu
 
 """""""""""""""""""""""
 " Don't create backup "
@@ -58,32 +62,39 @@ set ignorecase
 """""""""""""""""""
 " Visual settings "
 """""""""""""""""""
-" use this TRY..CATCH to avoid 'press enter to continue' in vim installation
-try
-    colorscheme molokai
-catch
-endtry
+" colors
+set t_Co=256
 
+colorscheme desert
 syntax on
 
-" highlight current line
+" color column (if set)
+highlight ColorColumn ctermbg=8
+
+" show cursor line
 set cursorline
-highlight CursorLine ctermbg=237
 
 " show linenumber
 set nu
 
-" colors
-set t_Co=256
-
 " To help in using of airline
 set laststatus=2
+
+" show traling spaces
+set list
+set listchars=trail:-
 
 """"""""""""
 " Commands "
 """"""""""""
 " Save with root privilege
-command Wroot :execute ':silent w !sudo tee % > /dev/null' | :edit!
+command! Wroot :execute ':silent w !sudo tee % > /dev/null' | :edit!
+
+" remove trailing whitespaces
+command! CleanTrail :%s/\s\+$//e
+
+" fix python import (based on isort)
+command! -nargs=* -range=% FixPythonImports :<line1>,<line2>! isort <args> -
 
 """"""""""
 " Abbrev "
@@ -103,13 +114,12 @@ cnoreabbrev Qall qall
 """""""""""""""""
 " Auto commands "
 """""""""""""""""
-" remove trailing whitespaces
-autocmd BufWritePre * :%s/\s\+$//e
-
 " show colorcolumn for column 80 in python files
 augroup python
     au!
     autocmd FileType python set colorcolumn=80
+    autocmd FileType python compiler flake8
+    autocmd BufWrite *.py :Dispatch
 augroup END
 
 " auto syntax for *.md files
@@ -119,26 +129,11 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " Plugins Settings "
 """"""""""""""""""""
 " Netrw
-let g:netrw_list_hide= '.*\.swp$,.*\.pyc,__pycache__'
+let g:netrw_list_hide= '.*\.swp$,.*\.pyc,__pycache__,.DS_Store'
 let g:netrw_localrmdir="rm -r"
 
-" Syntastic
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_error_symbol='✗'
-let g:syntastic_warning_symbol='⚠'
-let g:syntastic_style_error_symbol = '✗'
-let g:syntastic_style_warning_symbol = '⚠'
-let g:syntastic_auto_loc_list=1
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_python_checkers=['python', 'flake8']
-
-" IndentLine
-let g:indentLine_concealcursor = 0
-let g:indentLine_char = '┆'
-let g:indentLine_faster = 1
-
 " Airline
-let g:airline_theme = 'powerlineish'
+let g:airline_theme = 'term'
 let g:airline_enable_branch = 1
 let g:airline_enable_syntastic = 1
 let g:airline#extensions#tabline#enabled = 1
