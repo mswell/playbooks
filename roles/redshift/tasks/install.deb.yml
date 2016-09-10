@@ -1,0 +1,3 @@
+- name: ensure redshift is installed
+  apt: name=redshift state=present
+  sudo: yes
