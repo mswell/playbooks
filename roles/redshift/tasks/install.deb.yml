@@ -1,6 +1,3 @@
 - name: ensure redshift is installed
-  apt: name={{ item }} state=present
+  apt: name=redshift state=present
   sudo: yes
-  with_items:
-      - redshift
-      - redshift-gtk
