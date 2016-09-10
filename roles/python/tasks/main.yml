@@ -19,4 +19,7 @@
       - flake8
       - pylint
       - ptpython
-      - pyenv
+
+- name: install pyenv
+  command: sh -c "$(curl -fsSL https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer)"
+  sudo: yes
