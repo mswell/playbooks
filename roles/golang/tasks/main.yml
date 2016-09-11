@@ -3,3 +3,6 @@
 
 - include: install.arch.yml
   when: ansible_pkg_mgr == 'pacman'
+
+- name: ensure golang directory exists
+  file: path={{ golang_path }} state=directory
