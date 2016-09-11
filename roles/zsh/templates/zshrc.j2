@@ -29,8 +29,8 @@ export PATH=$PATH:{{ ansible_env.HOME }}/.gem/ruby/2.3.0/bin
 export PATH=$PATH:/usr/lib/node_modules
 
 # Golan stuff
-export GOPATH={{ ansible_env.HOME }}/go
-export PATH=$PATH:{{ ansible_env.HOME }}/go/bin
+export GOPATH={{ golang_path }}
+export PATH=$PATH:{{ golang_path }}/bin
 
 # Tmux stuff
 export TERM=screen-256color-bce
