@@ -2,22 +2,6 @@
   pacman: update_cache=yes
   sudo: yes
 
-- name: ensure keyring is installed
-  pacman: name={{ item }} state=latest
-  sudo: yes
-  with_items:
-      - manjaro-keyring
-      - archlinux-keyring
-      - gnupg
-
-- name: initialize the pacman keyring
-  command: pacman-key --init
-  sudo: yes
-
-- name: load the signature keys
-  command: pacman-key --populate archlinux manjaro
-  sudo: yes
-
-- name: refreash and update the signature keys
-  command: pacman-key --refresh-keys
+- name: install file-roller
+  pacman: name=file-roller state=present
   sudo: yes
