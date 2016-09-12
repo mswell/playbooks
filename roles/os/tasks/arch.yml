@@ -6,6 +6,7 @@
   pacman: name={{ item }} state=latest
   sudo: yes
   with_items:
+      - libgcrypt
       - manjaro-keyring
       - archlinux-keyring
       - gnupg
@@ -18,6 +19,6 @@
   command: pacman-key --populate archlinux manjaro
   sudo: yes
 
-- name: refreash and update the signature keys
+- name: refresh and update the signature keys
   command: pacman-key --refresh-keys
   sudo: yes
