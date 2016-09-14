@@ -19,11 +19,11 @@ endif
 call plug#begin('~/.vim/plugged/')
 
 " Plugins Installation
-Plug 'tpope/vim-dispatch'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'drgarcia1986/python-compilers.vim'
-Plug 'fatih/vim-go'
+Plug 'tpope/vim-dispatch', {'for': 'python'}
+Plug 'drgarcia1986/python-compilers.vim', {'for': 'python'}
+Plug 'fatih/vim-go', {'for': 'go'}
 
 call plug#end()
 
