@@ -133,6 +133,11 @@ augroup END
 " auto syntax for *.md files
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
+"""""""""""""""""""
+" Omni completion "
+"""""""""""""""""""
+set omnifunc=syntaxcomplete#Complete
+
 """"""""""""""""""""
 " Plugins Settings "
 """"""""""""""""""""
